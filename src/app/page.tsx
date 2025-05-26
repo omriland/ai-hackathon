@@ -6,12 +6,14 @@ import { useState, useEffect } from 'react';
 export default function Home() {
   const [showMobileModal, setShowMobileModal] = useState(false);
   const [isUpsideDown, setIsUpsideDown] = useState(false);
-  const [hasSeenModal, setHasSeenModal] = useState(false);
+  const [dontShowAgain, setDontShowAgain] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
       const isMobile = window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      if (isMobile && !hasSeenModal) {
+      const hasOptedOut = localStorage.getItem('hideHackathonMobileModal') === 'true';
+      
+      if (isMobile && !hasOptedOut) {
         setShowMobileModal(true);
       }
     };
@@ -87,8 +89,10 @@ export default function Home() {
         <div 
           className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
           onClick={() => {
+            if (dontShowAgain) {
+              localStorage.setItem('hideHackathonMobileModal', 'true');
+            }
             setShowMobileModal(false);
-            setHasSeenModal(true);
           }}
         >
           <div 
@@ -96,13 +100,26 @@ export default function Home() {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="text-4xl mb-6">📱</div>
-            <div className="text-right" dir="rtl">
+            <div className="text-right mb-6" dir="rtl">
               <p className="text-xl font-semibold text-gray-900 mb-3 leading-relaxed">
                 מה חשבתם, שלא השקעתי כדי לתמוך גם במובייל?
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
                 מוזמנים אפילו לסובב את המסך ולראות מה קורה
               </p>
+            </div>
+            
+            <div className="flex items-center justify-center gap-3 text-sm text-gray-600">
+              <input
+                type="checkbox"
+                id="dontShowAgain"
+                checked={dontShowAgain}
+                onChange={(e) => setDontShowAgain(e.target.checked)}
+                className="w-4 h-4 text-gray-600 bg-gray-100 border-gray-300 rounded focus:ring-gray-500 focus:ring-2"
+              />
+              <label htmlFor="dontShowAgain" className="cursor-pointer">
+                 תשחררו אותי מהפופאפ הזה
+              </label>
             </div>
           </div>
         </div>
@@ -123,6 +140,23 @@ export default function Home() {
               <p className="text-2xl md:text-3xl text-gray-600 font-light tracking-tight mb-4">
                 June 15–16 | 09:00–21:00
               </p>
+              <button 
+                onClick={() => {
+                  const startDate = new Date('2024-06-15T09:00:00');
+                  const endDate = new Date('2024-06-16T21:00:00');
+                  
+                  const formatDate = (date: Date) => {
+                    return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+                  };
+                  
+                  const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('Panoramic AI Hackathon')}&dates=${formatDate(startDate)}/${formatDate(endDate)}&details=${encodeURIComponent('Two Days. One Mission. Infinite Creativity. Build a working, scalable, and integratable POC that pushes Panoramic\'s platform forward.')}&location=${encodeURIComponent('Panoramic Office')}`;
+                  
+                  window.open(calendarUrl, '_blank');
+                }}
+                className="inline-flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-xl text-sm font-medium transition-colors duration-200 mb-6"
+              >
+                📅 Add to Calendar
+              </button>
               <p className="text-xl text-gray-500 font-light max-w-2xl mx-auto leading-relaxed">
                 Two Days. One Mission. Infinite Creativity.
               </p>
