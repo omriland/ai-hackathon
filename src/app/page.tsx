@@ -7,6 +7,9 @@ export default function Home() {
   const [showMobileModal, setShowMobileModal] = useState(false);
   const [isUpsideDown, setIsUpsideDown] = useState(false);
   const [dontShowAgain, setDontShowAgain] = useState(false);
+  const [matrixMode, setMatrixMode] = useState(false);
+  const [rocketLaunched, setRocketLaunched] = useState(false);
+  const [omriClickCount, setOmriClickCount] = useState(0);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -47,8 +50,81 @@ export default function Home() {
     };
   }, []);
 
+  const handleOmriClick = () => {
+    const newCount = omriClickCount + 1;
+    setOmriClickCount(newCount);
+    
+    if (newCount === 2) {
+      setMatrixMode(true);
+      setTimeout(() => setMatrixMode(false), 10000); // Matrix mode for 10 seconds
+      setOmriClickCount(0);
+    }
+    
+    // Reset counter after 3 seconds if not completed
+    setTimeout(() => {
+      if (omriClickCount < 1) setOmriClickCount(0);
+    }, 3000);
+  };
+
+  const handleRocketClick = () => {
+    setRocketLaunched(true);
+    setTimeout(() => setRocketLaunched(false), 3000); // Reset after 3 seconds
+  };
+
   return (
-    <div className="min-h-screen bg-white">
+    <div className={`min-h-screen transition-all duration-1000 ${matrixMode ? 'bg-black' : 'bg-white'}`}>
+      {/* Matrix Mode Easter Egg */}
+      {matrixMode && (
+        <div className="fixed inset-0 z-30 pointer-events-none overflow-hidden">
+          {/* Matrix falling code effect */}
+          {[...Array(50)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute text-green-400 font-mono text-sm opacity-80"
+              style={{
+                left: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 2}s`,
+                animationDuration: `${2 + Math.random() * 3}s`,
+              }}
+            >
+              <div className="matrix-code">
+                {Array.from({length: 20}, () => String.fromCharCode(33 + Math.random() * 94)).join('')}
+              </div>
+            </div>
+          ))}
+          
+          {/* Welcome message */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="text-center text-green-400 font-mono">
+              <h2 className="text-4xl md:text-6xl font-bold mb-4 animate-pulse">
+                WELCOME TO THE HACKATHON, NEO
+              </h2>
+              <p className="text-xl md:text-2xl">
+                The Matrix has you... but so does Panoramic 🕶️
+              </p>
+            </div>
+          </div>
+          
+          <style jsx>{`
+            @keyframes matrix-fall {
+              0% {
+                transform: translateY(-100vh);
+                opacity: 1;
+              }
+              100% {
+                transform: translateY(100vh);
+                opacity: 0;
+              }
+            }
+            .matrix-code {
+              animation: matrix-fall linear infinite;
+              writing-mode: vertical-rl;
+              text-orientation: upright;
+            }
+          `}</style>
+        </div>
+      )}
+
       {/* Heavy Snow Effect when upside down */}
       {isUpsideDown && (
         <div className="fixed inset-0 pointer-events-none z-40 overflow-hidden">
@@ -133,7 +209,20 @@ export default function Home() {
         <div className="bg-white">
           <div className="max-w-5xl mx-auto px-6 py-20 text-center animate-fade-in">
             <div className="mb-8">
-              <span className="text-6xl mb-6 block">🚀</span>
+              <span 
+                className={`text-6xl mb-6 block cursor-pointer transition-all duration-300 ${
+                  rocketLaunched ? 'animate-bounce transform scale-150' : 'hover:scale-110'
+                }`}
+                onClick={handleRocketClick}
+              >
+                🚀
+              </span>
+              {rocketLaunched && (
+                <div className="text-center animate-fade-in">
+                  <p className="text-2xl font-bold text-purple-600 mb-2">🚀 BLAST OFF! 🚀</p>
+                  <p className="text-lg text-gray-600">Houston, we have a hackathon!</p>
+                </div>
+              )}
               <h1 className="text-6xl md:text-7xl font-semibold text-gray-900 tracking-tight leading-none mb-6">
                 Panoramic AI Hackathon
               </h1>
@@ -205,8 +294,19 @@ export default function Home() {
                   <h3 className="text-2xl font-semibold text-gray-900 mb-6 tracking-tight">{group.name}</h3>
                   <div className="space-y-3">
                     {group.members.map((member, memberIndex) => (
-                      <div key={memberIndex} className="text-gray-700 py-3 px-4 bg-white rounded-2xl text-lg font-light border border-gray-200/50">
+                      <div 
+                        key={memberIndex} 
+                        className={`text-gray-700 py-3 px-4 bg-white rounded-2xl text-lg font-light border border-gray-200/50 ${
+                          member === 'Omri' ? 'cursor-pointer hover:bg-gray-50 transition-colors duration-200' : ''
+                        }`}
+                        onClick={member === 'Omri' ? handleOmriClick : undefined}
+                      >
                         {member}
+                        {member === 'Omri' && omriClickCount > 0 && (
+                          <span className="ml-2 text-xs text-green-600">
+                            {omriClickCount === 1 ? '•' : ''}
+                          </span>
+                        )}
                       </div>
                     ))}
                   </div>
