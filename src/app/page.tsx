@@ -1,8 +1,114 @@
+'use client';
+
 import React from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Home() {
+  const [showMobileModal, setShowMobileModal] = useState(false);
+  const [isUpsideDown, setIsUpsideDown] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      const isMobile = window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      if (isMobile) {
+        setShowMobileModal(true);
+      }
+    };
+
+    const checkOrientation = () => {
+      if (screen.orientation) {
+        // Check if the screen is rotated 180 degrees (upside down)
+        const angle = screen.orientation.angle;
+        setIsUpsideDown(angle === 180);
+      } else if (window.orientation !== undefined) {
+        // Fallback for older browsers
+        setIsUpsideDown(window.orientation === 180 || window.orientation === -180);
+      }
+    };
+
+    checkMobile();
+    checkOrientation();
+    
+    window.addEventListener('resize', checkMobile);
+    window.addEventListener('orientationchange', checkOrientation);
+    
+    if (screen.orientation) {
+      screen.orientation.addEventListener('change', checkOrientation);
+    }
+
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+      window.removeEventListener('orientationchange', checkOrientation);
+      if (screen.orientation) {
+        screen.orientation.removeEventListener('change', checkOrientation);
+      }
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-white">
+      {/* Heavy Snow Effect when upside down */}
+      {isUpsideDown && (
+        <div className="fixed inset-0 pointer-events-none z-40 overflow-hidden">
+          {[...Array(150)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute snow-flake"
+              style={{
+                left: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 5}s`,
+                animationDuration: `${3 + Math.random() * 4}s`,
+                fontSize: `${10 + Math.random() * 12}px`,
+              }}
+            >
+              ❄️
+            </div>
+          ))}
+          <style jsx>{`
+            @keyframes snowfall {
+              0% {
+                transform: translateY(-100px) translateX(0px) rotate(0deg);
+                opacity: 1;
+              }
+              50% {
+                transform: translateY(50vh) translateX(${Math.random() * 100 - 50}px) rotate(180deg);
+                opacity: 1;
+              }
+              100% {
+                transform: translateY(100vh) translateX(${Math.random() * 200 - 100}px) rotate(360deg);
+                opacity: 0;
+              }
+            }
+            .snow-flake {
+              animation: snowfall linear infinite;
+            }
+          `}</style>
+        </div>
+      )}
+
+      {/* Mobile Modal */}
+      {showMobileModal && (
+        <div 
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          onClick={() => setShowMobileModal(false)}
+        >
+          <div 
+            className="bg-white rounded-3xl p-8 max-w-sm mx-auto text-center shadow-2xl animate-fade-in"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="text-4xl mb-6">📱</div>
+            <div className="text-right" dir="rtl">
+              <p className="text-xl font-semibold text-gray-900 mb-3 leading-relaxed">
+                מה חשבתם, שלא השקעתי כדי לתמוך גם במובייל?
+              </p>
+              <p className="text-lg text-gray-600 leading-relaxed">
+                מוזמנים אפילו להפוך את המסך ולראות מה קורה
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Subtle background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-gray-50/30 to-white"></div>
       
