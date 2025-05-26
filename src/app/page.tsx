@@ -41,9 +41,9 @@ export default function Home() {
                 <span className="text-3xl"></span>
                 <h3 className="text-2xl font-semibold text-blue-900 tracking-tight">Mandatory Participation</h3>
               </div>
-              <p className="text-blue-800 text-lg font-light">
-                We're expecting everyone to participate in the hackathon together. No exceptions.
-              </p>
+                              <p className="text-blue-800 text-lg font-light">
+                  We&apos;re expecting everyone to participate in the hackathon together. No exceptions.
+                </p>
             </div>
           </div>
         </div>
