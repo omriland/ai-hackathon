@@ -31,9 +31,9 @@ export default function Home() {
           
           <div className="mt-8 p-6 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10">
             <p className="text-gray-300 text-lg leading-relaxed">
-              We're bringing our best minds together for 2 intense days of AI innovation. 
+              We&apos;re bringing our best minds together for 2 intense days of AI innovation. 
               Your mission: build a working, scalable, and integratable POC that pushes 
-              Panoramic's platform forward.
+              Panoramic&apos;s platform forward.
             </p>
           </div>
         </div>
@@ -82,7 +82,7 @@ export default function Home() {
             {[
               { icon: "🔍", title: "AI Agent with database access" },
               { icon: "⚡", title: "Timeview Anomaly Detection (UI integration)" },
-              { icon: "📡", title: "HW Edge Device to transmit analog inputs over RF", subtitle: "(talk to Alfred – Omri's the contact)" },
+              { icon: "📡", title: "HW Edge Device to transmit analog inputs over RF", subtitle: "(talk to Alfred – Omri&apos;s the contact)" },
               { icon: "📊", title: "Timeview Summary Generator" },
               { icon: "🔗", title: "External Data Sheet Comparison to energy usage" },
               { icon: "⚙️", title: "Auto Device Creation via doc upload" }
@@ -169,7 +169,7 @@ export default function Home() {
         <section className="text-center">
           <div className="bg-gradient-to-r from-cyan-500/10 to-purple-500/10 border border-cyan-400/20 rounded-2xl p-8">
             <h2 className="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent mb-4">
-              🎯 Let's build. Let's break stuff. Let's ship something epic.
+              🎯 Let&apos;s build. Let&apos;s break stuff. Let&apos;s ship something epic.
             </h2>
             <p className="text-gray-300 text-lg">
               Need support? Ask. Want to win? Push the limits.
