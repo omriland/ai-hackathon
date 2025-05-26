@@ -17,12 +17,12 @@ export default function Home() {
 
     const checkOrientation = () => {
       if (screen.orientation) {
-        // Check if the screen is rotated 180 degrees (upside down)
+        // Check if the screen is rotated 90 degrees to either side (landscape)
         const angle = screen.orientation.angle;
-        setIsUpsideDown(angle === 180);
+        setIsUpsideDown(angle === 90 || angle === 270 || angle === -90);
       } else if (window.orientation !== undefined) {
         // Fallback for older browsers
-        setIsUpsideDown(window.orientation === 180 || window.orientation === -180);
+        setIsUpsideDown(window.orientation === 90 || window.orientation === -90);
       }
     };
 
