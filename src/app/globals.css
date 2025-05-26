@@ -1,9 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #0f172a;
-  --color-foreground: #f8fafc;
+  --color-background: #ffffff;
+  --color-foreground: #1d1d1f;
   --animate-fade-in: fadeIn 1s ease-out;
+  --font-family-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
 }
 
 @keyframes fadeIn {
@@ -20,6 +21,10 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: var(--font-family-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.022em;
 }
 
 .animate-fade-in {
