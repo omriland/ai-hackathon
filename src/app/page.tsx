@@ -6,11 +6,12 @@ import { useState, useEffect } from 'react';
 export default function Home() {
   const [showMobileModal, setShowMobileModal] = useState(false);
   const [isUpsideDown, setIsUpsideDown] = useState(false);
+  const [hasSeenModal, setHasSeenModal] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
       const isMobile = window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      if (isMobile) {
+      if (isMobile && !hasSeenModal) {
         setShowMobileModal(true);
       }
     };
@@ -29,7 +30,7 @@ export default function Home() {
     checkMobile();
     checkOrientation();
     
-    window.addEventListener('resize', checkMobile);
+    // Only check orientation changes, not mobile detection on resize
     window.addEventListener('orientationchange', checkOrientation);
     
     if (screen.orientation) {
@@ -37,7 +38,6 @@ export default function Home() {
     }
 
     return () => {
-      window.removeEventListener('resize', checkMobile);
       window.removeEventListener('orientationchange', checkOrientation);
       if (screen.orientation) {
         screen.orientation.removeEventListener('change', checkOrientation);
@@ -70,13 +70,9 @@ export default function Home() {
                 transform: translateY(-100px) translateX(0px) rotate(0deg);
                 opacity: 1;
               }
-              50% {
-                transform: translateY(50vh) translateX(${Math.random() * 100 - 50}px) rotate(180deg);
-                opacity: 1;
-              }
               100% {
-                transform: translateY(100vh) translateX(${Math.random() * 200 - 100}px) rotate(360deg);
-                opacity: 0;
+                transform: translateY(calc(100vh + 100px)) translateX(50px) rotate(360deg);
+                opacity: 0.3;
               }
             }
             .snow-flake {
@@ -90,7 +86,10 @@ export default function Home() {
       {showMobileModal && (
         <div 
           className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-          onClick={() => setShowMobileModal(false)}
+          onClick={() => {
+            setShowMobileModal(false);
+            setHasSeenModal(true);
+          }}
         >
           <div 
             className="bg-white rounded-3xl p-8 max-w-sm mx-auto text-center shadow-2xl animate-fade-in"
@@ -102,7 +101,7 @@ export default function Home() {
                 מה חשבתם, שלא השקעתי כדי לתמוך גם במובייל?
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
-                מוזמנים אפילו להפוך את המסך ולראות מה קורה
+                מוזמנים אפילו לסובב את המסך ולראות מה קורה
               </p>
             </div>
           </div>
