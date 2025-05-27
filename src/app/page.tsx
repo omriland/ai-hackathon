@@ -441,7 +441,6 @@ export default function Home() {
                   <div className="w-2 h-2 bg-gray-900 rounded-full mt-3 flex-shrink-0"></div>
                   <div>
                     <h3 className="text-2xl font-semibold text-gray-900 mb-2 tracking-tight">Timeview Anomaly Detection</h3>
-                    <p className="text-gray-600 font-medium mb-2 text-lg">Preferably with a UI</p>
                     <p className="text-gray-700 font-light text-lg leading-relaxed">Develop anomaly detection algorithms for time-series data with a user-friendly interface that integrates seamlessly with existing Timeview components. The solution should be able to detect anomalies in the data and alert the user.</p>
                   </div>
                 </li>
@@ -459,13 +458,6 @@ export default function Home() {
                   </div>
                 </li>
                 
-                <li className="flex items-start gap-4">
-                  <div className="w-2 h-2 bg-gray-900 rounded-full mt-3 flex-shrink-0"></div>
-                  <div>
-                    <h3 className="text-2xl font-semibold text-gray-900 mb-2 tracking-tight">Timeview Summary Generator</h3>
-                    <p className="text-gray-700 font-light text-lg leading-relaxed">Build an AI-powered system that automatically generates intelligent summaries and insights from time-series data, helping users quickly understand trends and patterns for their current Timeview view.</p>
-                  </div>
-                </li>
                 
                 <li className="flex items-start gap-4">
                   <div className="w-2 h-2 bg-gray-900 rounded-full mt-3 flex-shrink-0"></div>
