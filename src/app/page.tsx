@@ -10,6 +10,7 @@ export default function Home() {
   const [matrixMode, setMatrixMode] = useState(false);
   const [rocketLaunched, setRocketLaunched] = useState(false);
   const [omriClickCount, setOmriClickCount] = useState(0);
+  const [screenShake, setScreenShake] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -68,11 +69,36 @@ export default function Home() {
 
   const handleRocketClick = () => {
     setRocketLaunched(true);
-    setTimeout(() => setRocketLaunched(false), 3000); // Reset after 3 seconds
+    setScreenShake(true);
+    
+    // Stop screen shake after 1 second
+    setTimeout(() => setScreenShake(false), 1000);
+    
+    // Reset rocket after 6 seconds
+    setTimeout(() => setRocketLaunched(false), 6000);
   };
 
   return (
-    <div className={`min-h-screen transition-all duration-1000 ${matrixMode ? 'bg-black' : 'bg-white'}`}>
+    <div className={`min-h-screen transition-all duration-1000 ${matrixMode ? 'bg-black' : 'bg-white'} ${screenShake ? 'animate-pulse' : ''}`}>
+      {screenShake && (
+        <style jsx>{`
+          @keyframes earthquake {
+            0%, 100% { transform: translate(0px, 0px) rotate(0deg); }
+            10% { transform: translate(-2px, -1px) rotate(-0.5deg); }
+            20% { transform: translate(-1px, 0px) rotate(0.5deg); }
+            30% { transform: translate(1px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(0.5deg); }
+            50% { transform: translate(-1px, 2px) rotate(-0.5deg); }
+            60% { transform: translate(-1px, 1px) rotate(0deg); }
+            70% { transform: translate(2px, 1px) rotate(-0.5deg); }
+            80% { transform: translate(-2px, -1px) rotate(0.5deg); }
+            90% { transform: translate(1px, 2px) rotate(0deg); }
+          }
+          .earthquake {
+            animation: earthquake 0.1s infinite;
+          }
+        `}</style>
+      )}
       {/* Matrix Mode Easter Egg */}
       {matrixMode && (
         <div className="fixed inset-0 z-30 pointer-events-none overflow-hidden">
@@ -204,23 +230,31 @@ export default function Home() {
       {/* Subtle background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-gray-50/30 to-white"></div>
       
-      <div className="relative z-10">
+      <div className={`relative z-10 ${screenShake ? 'earthquake' : ''}`}>
         {/* Hero Section */}
         <div className="bg-white">
           <div className="max-w-5xl mx-auto px-6 py-20 text-center animate-fade-in">
             <div className="mb-8">
               <span 
-                className={`text-6xl mb-6 block cursor-pointer transition-all duration-300 ${
-                  rocketLaunched ? 'animate-bounce transform scale-150' : 'hover:scale-110'
+                className={`text-6xl mb-6 block cursor-pointer transition-all ${
+                  rocketLaunched 
+                    ? 'duration-[2000ms] transform -translate-y-[200vh] scale-75 rotate-12' 
+                    : 'duration-300 hover:scale-110'
                 }`}
                 onClick={handleRocketClick}
+                style={{
+                  transformOrigin: 'center bottom'
+                }}
               >
                 🚀
               </span>
               {rocketLaunched && (
                 <div className="text-center animate-fade-in">
-                  <p className="text-2xl font-bold text-purple-600 mb-2">🚀 BLAST OFF! 🚀</p>
+                  <p className="text-2xl font-bold text-purple-600 mb-2 animate-pulse">🚀 BLAST OFF! 🚀</p>
                   <p className="text-lg text-gray-600">Houston, we have a hackathon!</p>
+                  <div className="mt-4 text-4xl animate-bounce">
+                    ✨ 💫 ⭐ 💫 ✨
+                  </div>
                 </div>
               )}
               <h1 className="text-6xl md:text-7xl font-semibold text-gray-900 tracking-tight leading-none mb-6">
@@ -262,16 +296,16 @@ export default function Home() {
         </div>
 
         {/* Mandatory Participation Notice */}
-        <div className="bg-blue-50/50">
+        <div className="bg-gray-900 hover:bg-blue-50/50 transition-all duration-500 group">
           <div className="max-w-5xl mx-auto px-6 py-12">
-            <div className="bg-blue-100 rounded-3xl p-8 text-center">
+            <div className="text-center">
               <div className="flex items-center justify-center gap-3 mb-4">
-                <span className="text-3xl"></span>
-                <h3 className="text-2xl font-semibold text-blue-900 tracking-tight">Mandatory Participation</h3>
+                <span className="text-3xl invert group-hover:invert-0 transition-all duration-500"></span>
+                <h3 className="text-2xl font-semibold text-white group-hover:text-gray-900 tracking-tight transition-all duration-500">Mandatory Participation</h3>
               </div>
-                              <p className="text-blue-800 text-lg font-light">
-                  We&apos;re expecting everyone to participate in the hackathon together. No exceptions.
-                </p>
+              <p className="text-gray-300 group-hover:text-gray-700 text-lg font-light transition-all duration-500">
+                We&apos;re expecting everyone to participate in the hackathon together. No exceptions.
+              </p>
             </div>
           </div>
         </div>
