@@ -425,7 +425,12 @@ export default function Home() {
               <h2 className="text-5xl font-semibold text-gray-900 tracking-tight mb-4">Pick Your Challenge</h2>
               <p className="text-xl text-gray-600 font-light">Choose the path that inspires you most.</p>
             </div>
+            <div className="bg-gradient-to-r from-purple-900 via-purple-800 to-indigo-900 rounded-3xl p-8 mb-12 text-center">
+              <p className="text-purple-100 text-xl font-medium text-center">
+                Each group should choose one of the following ideas and inform Omri Landman not later than June 10
+              </p>
 
+            </div>
             {/* Challenges List */}
             <div className="bg-gray-100 rounded-3xl p-12 mb-12">
               <ul className="space-y-8">
@@ -484,12 +489,7 @@ export default function Home() {
             </div>
 
             {/* Deadline Notice */}
-            <div className="bg-blue-50/50 rounded-3xl p-8 mb-12 text-center">
-              <p className="text-blue-800 text-xl font-bold mb-2">
-                Each group should choose one of the following ideas and inform Omri Landman not later than June 10
-              </p>
 
-            </div>
 
 
           </div>
