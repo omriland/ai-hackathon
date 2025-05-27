@@ -11,6 +11,12 @@ export default function Home() {
   const [rocketLaunched, setRocketLaunched] = useState(false);
   const [omriClickCount, setOmriClickCount] = useState(0);
   const [screenShake, setScreenShake] = useState(false);
+  const [dragError, setDragError] = useState(false);
+  const [teams, setTeams] = useState([
+    { name: "Group 1", members: ["Zvia", "Doron", "Eliya", "Moshe", "Inbar"] },
+    { name: "Group 2", members: ["Dror", "Fadi", "Guy", "Ido", "Chen", "Gal"] },
+    { name: "Group 3", members: ["Ariel", "Hila", "Natalia", "Meir", "Ori", "Omri"] }
+  ]);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -78,6 +84,44 @@ export default function Home() {
     setTimeout(() => setRocketLaunched(false), 6000);
   };
 
+  const handleDragStart = (e: React.DragEvent, member: string, groupIndex: number, memberIndex: number) => {
+    e.dataTransfer.setData('text/plain', JSON.stringify({ member, groupIndex, memberIndex }));
+  };
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+  };
+
+  const handleDrop = (e: React.DragEvent, targetGroupIndex: number, targetMemberIndex: number) => {
+    e.preventDefault();
+    const dragData = JSON.parse(e.dataTransfer.getData('text/plain'));
+    const { member, groupIndex: sourceGroupIndex, memberIndex: sourceMemberIndex } = dragData;
+
+    // Check if trying to move between different groups
+    if (sourceGroupIndex !== targetGroupIndex) {
+      setDragError(true);
+      setTimeout(() => setDragError(false), 4000);
+      return;
+    }
+
+    // Reorder within the same group
+    const newTeams = [...teams];
+    const sourceGroup = newTeams[sourceGroupIndex];
+    
+    // Remove from source position
+    sourceGroup.members.splice(sourceMemberIndex, 1);
+    
+    // Insert at target position
+    sourceGroup.members.splice(targetMemberIndex, 0, member);
+    
+    setTeams(newTeams);
+  };
+
+  const showDragError = () => {
+    setDragError(true);
+    setTimeout(() => setDragError(false), 4000);
+  };
+
   return (
     <div className={`min-h-screen transition-all duration-1000 ${matrixMode ? 'bg-black' : 'bg-white'} ${screenShake ? 'animate-pulse' : ''}`}>
       {screenShake && (
@@ -99,6 +143,17 @@ export default function Home() {
           }
         `}</style>
       )}
+      {/* Drag Error Effect */}
+      {dragError && (
+        <div className="fixed inset-0 z-40 pointer-events-none flex items-center justify-center">
+          <div className="bg-red-500 text-white px-8 py-4 rounded-3xl shadow-2xl animate-bounce text-center">
+            <div className="text-4xl mb-2">🚫</div>
+            <h3 className="text-2xl font-bold mb-2">Nice try!</h3>
+            <p className="text-lg">Teams are locked! You can only reorder within groups.</p>
+          </div>
+        </div>
+      )}
+
       {/* Matrix Mode Easter Egg */}
       {matrixMode && (
         <div className="fixed inset-0 z-30 pointer-events-none overflow-hidden">
@@ -319,23 +374,36 @@ export default function Home() {
             </div>
             
             <div className="grid md:grid-cols-3 gap-8">
-              {[
-                { name: "Group 1", members: ["Zvia", "Doron", "Eliya", "Moshe", "Inbar"] },
-                { name: "Group 2", members: ["Dror", "Fadi", "Guy", "Ido", "Chen", "Gal"] },
-                { name: "Group 3", members: ["Ariel", "Hila", "Natalia", "Meir", "Ori", "Omri"] }
-              ].map((group, index) => (
-                <div key={index} className="bg-gray-100 rounded-3xl p-8 hover:bg-gray-150 transition-colors duration-300">
+              {teams.map((group, groupIndex) => (
+                <div 
+                  key={groupIndex} 
+                  className="bg-gray-100 rounded-3xl p-8 hover:bg-gray-150 transition-colors duration-300"
+                  onDragOver={handleDragOver}
+                  onDrop={(e) => {
+                    // If dropping on group but not on specific member, show error
+                    if (e.target === e.currentTarget) {
+                      showDragError();
+                    }
+                  }}
+                >
                   <h3 className="text-2xl font-semibold text-gray-900 mb-6 tracking-tight">{group.name}</h3>
                   <div className="space-y-3">
                     {group.members.map((member, memberIndex) => (
                       <div 
-                        key={memberIndex} 
-                        className={`text-gray-700 py-3 px-4 bg-white rounded-2xl text-lg font-light border border-gray-200/50 ${
-                          member === 'Omri' ? 'cursor-pointer hover:bg-gray-50 transition-colors duration-200' : ''
+                        key={`${groupIndex}-${memberIndex}`}
+                        draggable
+                        className={`text-gray-700 py-3 px-4 bg-white rounded-2xl text-lg font-light border border-gray-200/50 cursor-move hover:bg-gray-50 transition-colors duration-200 hover:shadow-md ${
+                          member === 'Omri' ? 'hover:bg-blue-50' : ''
                         }`}
+                        onDragStart={(e) => handleDragStart(e, member, groupIndex, memberIndex)}
+                        onDragOver={handleDragOver}
+                        onDrop={(e) => handleDrop(e, groupIndex, memberIndex)}
                         onClick={member === 'Omri' ? handleOmriClick : undefined}
                       >
-                        {member}
+                        <div className="flex items-center justify-between">
+                          <span>{member}</span>
+                          <span className="text-gray-400 text-sm">⋮⋮</span>
+                        </div>
                         {member === 'Omri' && omriClickCount > 0 && (
                           <span className="ml-2 text-xs text-green-600">
                             {omriClickCount === 1 ? '•' : ''}
