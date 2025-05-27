@@ -427,7 +427,7 @@ export default function Home() {
             </div>
             <div className="bg-gradient-to-r from-purple-900 via-purple-800 to-indigo-900 rounded-3xl p-8 mb-12 text-center">
               <p className="text-purple-100 text-xl font-medium text-center">
-                Each group should choose one of the following ideas and inform Omri Landman not later than June 10
+                Each group should choose one of the following ideas and inform Omri Landman not later than June 8th
               </p>
 
             </div>
