@@ -281,7 +281,7 @@ export default function Home() {
                 📅 Add to Calendar
               </button>
               <p className="text-xl text-gray-500 font-light max-w-2xl mx-auto leading-relaxed">
-                Two Days. One Mission. Infinite Creativity.
+                Two Days. One Mission. Infinite Creativity (and good food 🍕)
               </p>
             </div>
             
@@ -399,7 +399,7 @@ export default function Home() {
                   <div className="w-2 h-2 bg-gray-900 rounded-full mt-3 flex-shrink-0"></div>
                   <div>
                     <h3 className="text-2xl font-semibold text-gray-900 mb-2 tracking-tight">Compare external info with energy data</h3>
-                    <p className="text-gray-700 font-light text-lg leading-relaxed">Create a solution that allows users to import external data sources (PDFs, Excel sheets, etc.) and compare them with energy data for a chosen timeframe.</p>
+                    <p className="text-gray-700 font-light text-lg leading-relaxed">Create a solution that allows users to import external data sources (PDFs, Excel sheets, etc.) and compare them with energy data for a chosen timeframe. For example: compare production line data with its energy consumption, OR, compare dining room occupancy with its energy consumption, etc.</p>
                   </div>
                 </li>
                 
@@ -421,7 +421,7 @@ export default function Home() {
 
             {/* Deadline Notice */}
             <div className="bg-blue-50/50 rounded-3xl p-8 mb-12 text-center">
-              <p className="text-blue-800 text-lg font-light mb-2">
+              <p className="text-blue-800 text-xl font-bold mb-2">
                 Each group should choose one of the following ideas and inform Omri Landman not later than June 10
               </p>
 
@@ -432,7 +432,7 @@ export default function Home() {
         </div>
 
         {/* Rules Section */}
-        <div className="bg-gray-50/30">
+        <div className="bg-gray-50/50">
           <div className="max-w-5xl mx-auto px-6 py-20">
             <div className="text-center mb-16">
               <h2 className="text-5xl font-semibold text-gray-900 tracking-tight mb-4">Hackathon Rules</h2>
@@ -445,7 +445,7 @@ export default function Home() {
                 "Your solution must be scalable and integratable with our platform",
                 "You have 2 full days – make them count"
               ].map((rule, index) => (
-                <div key={index} className="flex items-start gap-8 p-8 bg-gray-50/50 rounded-3xl hover:bg-gray-50 transition-colors duration-300">
+                <div key={index} className="flex items-start gap-8 p-8 bg-gray-100 rounded-3xl hover:bg-gray-150 transition-colors duration-300">
                   <div className="w-12 h-12 bg-gray-900 rounded-2xl flex items-center justify-center text-white font-semibold text-lg flex-shrink-0">
                     {index + 1}
                   </div>
