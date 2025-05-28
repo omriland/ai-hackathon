@@ -13,9 +13,9 @@ export default function Home() {
   const [screenShake, setScreenShake] = useState(false);
   const [dragError, setDragError] = useState(false);
   const [teams, setTeams] = useState([
-    { name: "⚡ Volt", members: ["Zvia", "Doron", "Eliya", "Moshe", "Omri"] },
+    { name: "⚡ Volt", members: ["Zvia", "Doron", "Eliya", "Moshe", "Omri", "Alfred"] },
     { name: "🔋 Flux", members: ["Dror", "Fadi", "Guy", "Ido", "Gal", "Inbar"] },
-    { name: "⭐ Spark", members: ["Ariel", "Hila", "Natalia", "Meir", "Ori", "Alfred"] }
+    { name: "⭐ Spark", members: ["Ariel", "Hila", "Natalia", "Meir", "Ori"] }
   ]);
 
   useEffect(() => {
