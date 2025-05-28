@@ -123,7 +123,76 @@ export default function Home() {
   };
 
   return (
-    <div className={`min-h-screen transition-all duration-1000 ${matrixMode ? 'bg-black' : 'bg-purple-950'} ${screenShake ? 'animate-pulse' : ''}`}>
+    <div className={`min-h-screen transition-all duration-1000 ${matrixMode ? 'bg-black' : 'bg-purple-950'} ${screenShake ? 'animate-pulse' : ''} relative`}>
+      
+      {/* Cool Asymmetric Background Pattern */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        {/* Geometric shapes - slightly more visible */}
+        <div className="absolute top-10 left-10 w-16 h-16 bg-white/12 rounded-full"></div>
+        <div className="absolute top-20 right-20 w-12 h-12 bg-white/10 rotate-45"></div>
+        <div className="absolute bottom-10 left-1/4 w-20 h-20 bg-white/8 rounded-full"></div>
+        <div className="absolute top-1/2 right-10 w-8 h-8 bg-white/14 rounded-full"></div>
+        
+        {/* Additional scattered elements */}
+        <div className="absolute top-32 left-1/3 w-6 h-6 border border-white/12 rounded-full"></div>
+        <div className="absolute bottom-32 right-1/4 w-10 h-10 border border-white/10 rotate-12"></div>
+        <div className="absolute top-2/3 left-16 w-4 h-4 bg-white/11 rounded-full"></div>
+        <div className="absolute top-80 right-1/3 w-14 h-14 border border-white/8 rounded-full"></div>
+        <div className="absolute bottom-80 left-1/5 w-8 h-8 bg-white/9 rotate-45"></div>
+        
+        {/* More elements for full page coverage */}
+        <div className="absolute top-1/4 left-3/4 w-12 h-12 border border-white/7 rotate-30"></div>
+        <div className="absolute top-3/4 right-1/5 w-6 h-6 bg-white/10 rounded-full"></div>
+        <div className="absolute bottom-1/4 left-2/3 w-16 h-16 border border-white/6 rounded-full"></div>
+        
+        {/* New enhanced shapes */}
+        <div className="absolute top-40 left-1/6 w-10 h-10 bg-white/8 rotate-60"></div>
+        <div className="absolute top-1/3 right-1/3 w-18 h-18 border border-white/9 rounded-full"></div>
+        <div className="absolute bottom-40 right-1/6 w-7 h-7 bg-white/11 rotate-75"></div>
+        <div className="absolute top-3/5 left-1/8 w-5 h-5 border border-white/10 rotate-45"></div>
+        <div className="absolute bottom-1/3 left-3/5 w-13 h-13 bg-white/7 rounded-full"></div>
+        <div className="absolute top-1/6 right-2/5 w-9 h-9 border border-white/8 rotate-15"></div>
+        
+        {/* Triangular shapes */}
+        <div className="absolute top-24 left-2/5 w-0 h-0 border-l-4 border-r-4 border-b-6 border-transparent border-b-white/9"></div>
+        <div className="absolute bottom-24 right-2/5 w-0 h-0 border-l-5 border-r-5 border-b-8 border-transparent border-b-white/7 rotate-180"></div>
+        <div className="absolute top-1/2 left-4/5 w-0 h-0 border-l-3 border-r-3 border-b-5 border-transparent border-b-white/10 rotate-45"></div>
+        
+        {/* Enhanced curved lines across the page */}
+        <svg className="absolute inset-0 w-full h-full">
+          <path d="M0,80 Q200,40 400,80 T800,80" stroke="rgba(255,255,255,0.08)" strokeWidth="1" fill="none" />
+          <path d="M100,200 Q300,160 500,200 T900,200" stroke="rgba(255,255,255,0.06)" strokeWidth="1" fill="none" />
+          <path d="M0,300 Q250,260 500,300 T1000,300" stroke="rgba(255,255,255,0.07)" strokeWidth="1" fill="none" />
+          <path d="M200,500 Q400,460 600,500 T1000,500" stroke="rgba(255,255,255,0.05)" strokeWidth="1" fill="none" />
+          <path d="M0,700 Q300,660 600,700 T1200,700" stroke="rgba(255,255,255,0.06)" strokeWidth="1" fill="none" />
+          
+          {/* New flowing lines */}
+          <path d="M50,150 Q350,110 650,150 T1150,150" stroke="rgba(255,255,255,0.05)" strokeWidth="1" fill="none" />
+          <path d="M150,400 Q450,360 750,400 T1250,400" stroke="rgba(255,255,255,0.07)" strokeWidth="1" fill="none" />
+          <path d="M0,600 Q200,570 400,600 T800,600" stroke="rgba(255,255,255,0.06)" strokeWidth="1" fill="none" />
+          
+          {/* Diagonal flowing lines */}
+          <path d="M0,0 Q300,200 600,100 T1200,300" stroke="rgba(255,255,255,0.04)" strokeWidth="1" fill="none" />
+          <path d="M200,0 Q500,150 800,50 T1400,250" stroke="rgba(255,255,255,0.05)" strokeWidth="1" fill="none" />
+        </svg>
+        
+        {/* Enhanced small dots scattered across the page */}
+        <div className="absolute top-16 left-2/3 w-1 h-1 bg-white/15 rounded-full"></div>
+        <div className="absolute top-48 left-1/5 w-2 h-2 bg-white/12 rounded-full"></div>
+        <div className="absolute bottom-24 right-1/3 w-1 h-1 bg-white/14 rounded-full"></div>
+        <div className="absolute top-60 right-2/3 w-2 h-2 bg-white/10 rounded-full"></div>
+        <div className="absolute bottom-60 left-1/6 w-1 h-1 bg-white/13 rounded-full"></div>
+        <div className="absolute top-1/3 left-4/5 w-2 h-2 bg-white/11 rounded-full"></div>
+        
+        {/* Additional accent dots */}
+        <div className="absolute top-36 right-1/8 w-1 h-1 bg-white/16 rounded-full"></div>
+        <div className="absolute bottom-36 left-1/7 w-2 h-2 bg-white/9 rounded-full"></div>
+        <div className="absolute top-2/5 right-3/4 w-1 h-1 bg-white/12 rounded-full"></div>
+        <div className="absolute bottom-2/5 right-1/7 w-2 h-2 bg-white/14 rounded-full"></div>
+        <div className="absolute top-5/6 left-1/3 w-1 h-1 bg-white/11 rounded-full"></div>
+        <div className="absolute top-1/8 left-3/4 w-2 h-2 bg-white/13 rounded-full"></div>
+      </div>
+
       {screenShake && (
         <style jsx>{`
           @keyframes earthquake {
@@ -282,12 +351,9 @@ export default function Home() {
         </div>
       )}
 
-      {/* Subtle background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-purple-900/30 to-purple-950"></div>
-      
       <div className={`relative z-10 ${screenShake ? 'earthquake' : ''}`}>
         {/* Hero Section */}
-        <div className="bg-purple-900">
+        <div className="">
           <div className="max-w-5xl mx-auto px-6 py-20 text-center animate-fade-in">
             <div className="mb-8">
               <span 
@@ -351,7 +417,7 @@ export default function Home() {
         </div>
 
         {/* Mandatory Participation Notice */}
-        <div className="bg-purple-800">
+        <div className="bg-purple-800/20">
           <div className="max-w-5xl mx-auto px-6 py-12">
             <div className="text-center">
               <div className="flex items-center justify-center gap-3 mb-4">
@@ -366,7 +432,7 @@ export default function Home() {
         </div>
 
         {/* Teams Section */}
-        <div className="bg-purple-900/50">
+        <div className="bg-purple-900/10">
           <div className="max-w-5xl mx-auto px-6 py-20">
             <div className="text-center mb-16">
               <h2 className="text-5xl font-semibold text-purple-100 tracking-tight mb-4">Teams</h2>
@@ -419,7 +485,7 @@ export default function Home() {
         </div>
 
         {/* Challenges Section */}
-        <div className="bg-purple-800/30">
+        <div className="bg-purple-800/10">
           <div className="max-w-5xl mx-auto px-6 py-20">
             <div className="text-center mb-16">
               <h2 className="text-5xl font-semibold text-purple-100 tracking-tight mb-4">Pick Your Challenge</h2>
@@ -432,7 +498,7 @@ export default function Home() {
 
             </div>
             {/* Challenges List */}
-            <div className="bg-purple-800 rounded-3xl p-12 mb-12 border border-purple-700">
+            <div className="bg-purple-800/30 rounded-3xl p-12 border border-purple-700/50">
               <ul className="space-y-8">
                 <li className="flex items-start gap-4">
                   <div className="w-2 h-2 bg-purple-300 rounded-full mt-3 flex-shrink-0"></div>
@@ -496,7 +562,7 @@ export default function Home() {
         </div>
 
         {/* Rules Section */}
-        <div className="bg-purple-900/50">
+        <div className="bg-purple-900/10">
           <div className="max-w-5xl mx-auto px-6 py-20">
             <div className="text-center mb-16">
               <h2 className="text-5xl font-semibold text-purple-100 tracking-tight mb-4">Hackathon Rules</h2>
@@ -509,7 +575,7 @@ export default function Home() {
                 "Your solution must be scalable and integratable with our platform",
                 "You have 2 full days – make them count"
               ].map((rule, index) => (
-                <div key={index} className="flex items-start gap-8 p-8 bg-purple-800 rounded-3xl hover:bg-purple-700 transition-colors duration-300 border border-purple-700">
+                <div key={index} className="flex items-start gap-8 p-8 bg-purple-800/40 rounded-3xl hover:bg-purple-700/50 transition-colors duration-300 border border-purple-700/50">
                   <div className="w-12 h-12 bg-purple-600 rounded-2xl flex items-center justify-center text-purple-100 font-semibold text-lg flex-shrink-0 border border-purple-500">
                     {index + 1}
                   </div>
@@ -521,14 +587,14 @@ export default function Home() {
         </div>
 
         {/* Final Showdown */}
-        <div className="bg-purple-800/30">
+        <div className="bg-purple-800/10">
           <div className="max-w-5xl mx-auto px-6 py-20">
             <div className="text-center mb-16">
               <h2 className="text-5xl font-semibold text-purple-100 tracking-tight mb-4">Final Showdown</h2>
               <p className="text-xl text-purple-200 font-light">Where innovation meets recognition.</p>
             </div>
             
-            <div className="bg-purple-800/50 rounded-3xl p-12 border border-purple-700">
+            <div className="bg-purple-800/30 rounded-3xl p-12 border border-purple-700/50">
               <h3 className="text-3xl font-semibold text-purple-100 mb-8 tracking-tight">End of Day 2</h3>
               <div className="space-y-6">
                 {[
@@ -548,7 +614,7 @@ export default function Home() {
         </div>
 
         {/* Call to Action */}
-        <div className="bg-purple-950">
+        <div className="bg-purple-950/50">
           <div className="max-w-5xl mx-auto px-6 py-20 text-center text-purple-100">
             <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-6">
               Let&apos;s build. Let&apos;s break stuff. Let&apos;s ship something epic.
