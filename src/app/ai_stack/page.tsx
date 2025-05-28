@@ -8,15 +8,42 @@ export default function AIStack() {
 
   const categories = [
     { id: 'all', name: 'All Tools' },
+    // IDEs
+    { id: 'ides', name: 'AI-driven IDEs' },
+    { id: 'code', name: 'Code & Dev' },
+    // Build your app
     { id: 'general', name: 'General Purpose' },
     { id: 'data', name: 'Data Processing & Analytics' },
     { id: 'automation', name: 'Automation' },
-    { id: 'code', name: 'Code & Dev' },
-    { id: 'deployment', name: 'Deployment & Hosting' },
-    { id: 'energy', name: 'Open Source Energy Models' }
+    { id: 'energy', name: 'Open Source Energy Models' },
+    // Deploy your app
+    { id: 'deployment', name: 'Deployment & Hosting' }
   ];
 
   const aiTools = [
+    // AI-driven IDEs
+    {
+      name: 'Cursor',
+      description: 'AI-first code editor built for pair programming with AI. Get intelligent code suggestions, explanations, and refactoring assistance.',
+      category: ['ides'],
+      url: 'https://cursor.sh',
+      pricing: 'Free/Pro'
+    },
+    {
+      name: 'Windsurf',
+      description: 'AI-powered IDE by Codeium with deep codebase understanding. Features agentic AI that can edit multiple files and understand your entire project.',
+      category: ['ides'],
+      url: 'https://codeium.com/windsurf',
+      pricing: 'Free/Pro'
+    },
+    {
+      name: 'Zed',
+      description: 'High-performance, multiplayer code editor with built-in AI assistance. Lightning-fast with real-time collaboration and AI-powered features.',
+      category: ['ides'],
+      url: 'https://zed.dev',
+      pricing: 'Free'
+    },
+
     // General Purpose
     {
       name: 'OpenAI API',
@@ -88,28 +115,33 @@ export default function AIStack() {
 
     // Code & Development
     {
-      name: 'GitHub Copilot API',
-      description: 'Integrate AI code assistance directly into your development workflow - accelerate building of data processing pipelines and energy analysis algorithms',
+      name: 'GitHub Copilot',
+      description: 'AI pair programmer that suggests code and entire functions in real-time. Works with VS Code, JetBrains IDEs, and more.',
       category: ['code'],
-      url: 'https://docs.github.com/en/copilot',
-      pricing: 'API-based'
+      url: 'https://github.com/features/copilot',
+      pricing: 'Subscription'
     },
     {
-      name: 'Tabnine API',
-      description: 'Embed intelligent code completion into your IDE setup - speed up development of data analysis scripts and energy monitoring applications',
+      name: 'Tabnine',
+      description: 'AI code completion that learns from your codebase. Supports 30+ languages and integrates with popular IDEs.',
       category: ['code'],
-      url: 'https://www.tabnine.com/code-review',
-      pricing: 'API-based'
+      url: 'https://www.tabnine.com',
+      pricing: 'Free/Pro'
     },
     {
-      name: 'Replit API',
-      description: 'Programmatically create and deploy energy data processing applications with built-in AI assistance for rapid prototyping',
+      name: 'Codeium',
+      description: 'Free AI-powered code acceleration toolkit. Offers autocomplete, chat, and search across 70+ programming languages.',
       category: ['code'],
-      url: 'https://docs.replit.com',
-      pricing: 'API-based'
+      url: 'https://codeium.com',
+      pricing: 'Free'
     },
-
-    // Data & Analytics
+    {
+      name: 'Replit',
+      description: 'Browser-based development environment with AI assistance. Code, collaborate, and deploy applications with built-in AI pair programming.',
+      category: ['code'],
+      url: 'https://replit.com',
+      pricing: 'Free/Pro'
+    },
     {
       name: 'Hugging Face API',
       description: 'Access thousands of pre-trained models via API - implement time-series analysis, anomaly detection, and NLP for document processing in your energy platform',
@@ -117,6 +149,8 @@ export default function AIStack() {
       url: 'https://huggingface.co/docs/api-inference',
       pricing: 'API-based'
     },
+
+    // Data & Analytics
     {
       name: 'Weights & Biases API',
       description: 'Integrate experiment tracking and model monitoring into your energy prediction models - track performance of anomaly detection algorithms programmatically',
@@ -315,10 +349,10 @@ export default function AIStack() {
             <div className="mb-8">
               <span className="text-6xl mb-6 block">🤖</span>
               <h1 className="text-6xl md:text-7xl font-semibold text-purple-100 tracking-tight leading-none mb-6">
-                AI Stack Library
+                There's an AI for that
               </h1>
               <p className="text-2xl md:text-3xl text-purple-200 font-light tracking-tight mb-4">
-                Curated collection of AI tools & platforms
+                AI stack library
               </p>
               <p className="text-xl text-purple-300 font-light max-w-3xl mx-auto leading-relaxed">
                 Discover the best AI tools for development, creativity, automation, and more. 
@@ -331,20 +365,112 @@ export default function AIStack() {
         {/* Category Filter */}
         <div className="bg-purple-800/10">
           <div className="max-w-7xl mx-auto px-6 py-12">
-            <div className="flex flex-wrap justify-center gap-2 md:gap-3">
-              {categories.map((category) => (
-                <button
-                  key={category.id}
-                  onClick={() => setSelectedCategory(category.id)}
-                  className={`px-4 py-2 md:px-5 md:py-3 rounded-xl font-medium transition-all duration-300 text-sm md:text-base ${
-                    selectedCategory === category.id
-                      ? 'bg-purple-600 text-purple-100 shadow-lg shadow-purple-500/20'
-                      : 'bg-purple-800/30 text-purple-200 hover:bg-purple-700/40 border border-purple-700/50'
-                  }`}
-                >
-                  <span>{category.name}</span>
-                </button>
-              ))}
+            {/* All Tools Button */}
+            <div className="flex justify-center mb-8">
+              <button
+                onClick={() => setSelectedCategory('all')}
+                className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 text-base ${
+                  selectedCategory === 'all'
+                    ? 'bg-purple-600 text-purple-100 shadow-lg shadow-purple-500/20'
+                    : 'bg-purple-800/30 text-purple-200 hover:bg-purple-700/40 border border-purple-700/50'
+                }`}
+              >
+                All Tools
+              </button>
+            </div>
+
+            {/* Three Groups */}
+            <div className="grid md:grid-cols-3 gap-8">
+              {/* IDEs Group */}
+              <div className="text-center">
+                <h3 className="text-lg font-medium text-purple-200 mb-4">IDEs</h3>
+                <div className="flex flex-col gap-2">
+                  <button
+                    onClick={() => setSelectedCategory('ides')}
+                    className={`px-4 py-2 rounded-xl font-medium transition-all duration-300 text-sm ${
+                      selectedCategory === 'ides'
+                        ? 'bg-purple-600 text-purple-100 shadow-lg shadow-purple-500/20'
+                        : 'bg-purple-800/30 text-purple-200 hover:bg-purple-700/40 border border-purple-700/50'
+                    }`}
+                  >
+                    AI-driven IDEs
+                  </button>
+                  <button
+                    onClick={() => setSelectedCategory('code')}
+                    className={`px-4 py-2 rounded-xl font-medium transition-all duration-300 text-sm ${
+                      selectedCategory === 'code'
+                        ? 'bg-purple-600 text-purple-100 shadow-lg shadow-purple-500/20'
+                        : 'bg-purple-800/30 text-purple-200 hover:bg-purple-700/40 border border-purple-700/50'
+                    }`}
+                  >
+                    Code & Dev
+                  </button>
+                </div>
+              </div>
+
+              {/* Build Your App Group */}
+              <div className="text-center">
+                <h3 className="text-lg font-medium text-purple-200 mb-4">Build your app</h3>
+                <div className="flex flex-col gap-2">
+                  <button
+                    onClick={() => setSelectedCategory('general')}
+                    className={`px-4 py-2 rounded-xl font-medium transition-all duration-300 text-sm ${
+                      selectedCategory === 'general'
+                        ? 'bg-purple-600 text-purple-100 shadow-lg shadow-purple-500/20'
+                        : 'bg-purple-800/30 text-purple-200 hover:bg-purple-700/40 border border-purple-700/50'
+                    }`}
+                  >
+                    General Purpose
+                  </button>
+                  <button
+                    onClick={() => setSelectedCategory('data')}
+                    className={`px-4 py-2 rounded-xl font-medium transition-all duration-300 text-sm ${
+                      selectedCategory === 'data'
+                        ? 'bg-purple-600 text-purple-100 shadow-lg shadow-purple-500/20'
+                        : 'bg-purple-800/30 text-purple-200 hover:bg-purple-700/40 border border-purple-700/50'
+                    }`}
+                  >
+                    Data Processing & Analytics
+                  </button>
+                  <button
+                    onClick={() => setSelectedCategory('automation')}
+                    className={`px-4 py-2 rounded-xl font-medium transition-all duration-300 text-sm ${
+                      selectedCategory === 'automation'
+                        ? 'bg-purple-600 text-purple-100 shadow-lg shadow-purple-500/20'
+                        : 'bg-purple-800/30 text-purple-200 hover:bg-purple-700/40 border border-purple-700/50'
+                    }`}
+                  >
+                    Automation
+                  </button>
+                  <button
+                    onClick={() => setSelectedCategory('energy')}
+                    className={`px-4 py-2 rounded-xl font-medium transition-all duration-300 text-sm ${
+                      selectedCategory === 'energy'
+                        ? 'bg-purple-600 text-purple-100 shadow-lg shadow-purple-500/20'
+                        : 'bg-purple-800/30 text-purple-200 hover:bg-purple-700/40 border border-purple-700/50'
+                    }`}
+                  >
+                    Open Source Energy Models
+                  </button>
+                </div>
+              </div>
+
+              {/* Deploy Your App Group */}
+              <div className="text-center">
+                <h3 className="text-lg font-medium text-purple-200 mb-4">Deploy your app</h3>
+                <div className="flex flex-col gap-2">
+                  <button
+                    onClick={() => setSelectedCategory('deployment')}
+                    className={`px-4 py-2 rounded-xl font-medium transition-all duration-300 text-sm ${
+                      selectedCategory === 'deployment'
+                        ? 'bg-purple-600 text-purple-100 shadow-lg shadow-purple-500/20'
+                        : 'bg-purple-800/30 text-purple-200 hover:bg-purple-700/40 border border-purple-700/50'
+                    }`}
+                  >
+                    Deployment & Hosting
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
