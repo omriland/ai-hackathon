@@ -7,12 +7,13 @@ export default function AIStack() {
   const [selectedCategory, setSelectedCategory] = useState('all');
 
   const categories = [
-    { id: 'all', name: 'All Tools', icon: '🤖' },
-    { id: 'general', name: 'General Purpose', icon: '🧠' },
-    { id: 'data', name: 'Data Processing & Analytics', icon: '📊' },
-    { id: 'automation', name: 'Automation', icon: '⚡' },
-    { id: 'code', name: 'Code & Dev', icon: '💻' },
-    { id: 'deployment', name: 'Deployment & Hosting', icon: '🚀' }
+    { id: 'all', name: 'All Tools' },
+    { id: 'general', name: 'General Purpose' },
+    { id: 'data', name: 'Data Processing & Analytics' },
+    { id: 'automation', name: 'Automation' },
+    { id: 'code', name: 'Code & Dev' },
+    { id: 'deployment', name: 'Deployment & Hosting' },
+    { id: 'energy', name: 'Open Source Energy Models' }
   ];
 
   const aiTools = [
@@ -210,6 +211,78 @@ export default function AIStack() {
       category: ['deployment'],
       url: 'https://fly.io/docs',
       pricing: 'Pay-as-you-go'
+    },
+
+    // Open Source Energy Models
+    {
+      name: 'OSeMOSYS',
+      description: 'Plan and optimize entire energy systems - from power plants to renewable sources. Helps governments and companies design efficient energy strategies.',
+      category: ['energy'],
+      url: 'https://github.com/OSeMOSYS/OSeMOSYS',
+      pricing: 'Open Source'
+    },
+    {
+      name: 'openMASTER',
+      description: 'Analyze sustainable energy roadmaps with Python. Build models to study how energy systems can become cleaner and more efficient over time.',
+      category: ['energy'],
+      url: 'https://github.com/IIT-EnergySystemModels/openMASTER',
+      pricing: 'Open Source'
+    },
+    {
+      name: 'PyPSA-Eur',
+      description: 'Model European energy systems including electricity, heating, and transport. Optimize renewable energy integration across countries.',
+      category: ['energy'],
+      url: 'https://github.com/PyPSA/pypsa-eur',
+      pricing: 'Open Source'
+    },
+    {
+      name: 'PyPSA-Earth',
+      description: 'Study energy systems anywhere in the world. Plan renewable energy investments and grid infrastructure for any country or region.',
+      category: ['energy'],
+      url: 'https://github.com/pypsa-meets-earth/pypsa-earth',
+      pricing: 'Open Source'
+    },
+    {
+      name: 'TIMES Model',
+      description: 'Bottom-up energy system modeling tool. Analyze energy technologies, costs, and environmental impacts for long-term planning.',
+      category: ['energy'],
+      url: 'https://github.com/etsap-TIMES/TIMES_model',
+      pricing: 'Open Source'
+    },
+    {
+      name: 'ManufacturingNet',
+      description: 'AI toolkit for manufacturing problems. Includes machine learning models for energy optimization and equipment maintenance prediction.',
+      category: ['energy'],
+      url: 'https://github.com/BaratiLab/ManufacturingNet',
+      pricing: 'Open Source'
+    },
+    {
+      name: 'Manufacturing Line Optimization',
+      description: 'Use AI to optimize factory production lines. Reduce energy consumption while maintaining or increasing output efficiency.',
+      category: ['energy'],
+      url: 'https://github.com/microsoft/bonsai-ManufacturingLineOptimization',
+      pricing: 'Open Source'
+    },
+    {
+      name: 'Iron and Steel Model',
+      description: 'Calculate energy use and emissions in steel production. Compare different manufacturing processes and optimize for efficiency.',
+      category: ['energy'],
+      url: 'https://github.com/ottohebeda/Iron-and-steel-model',
+      pricing: 'Open Source'
+    },
+    {
+      name: 'FJSP Energy Optimization',
+      description: 'Schedule manufacturing jobs to save energy. Automatically turn machines on/off to reduce power consumption by up to 20%.',
+      category: ['energy'],
+      url: 'https://github.com/hamcruise/FJSP-Shutdown',
+      pricing: 'Open Source'
+    },
+    {
+      name: 'Predictive Maintenance',
+      description: 'Predict when factory equipment will break down. Use sensors and AI to schedule maintenance before failures happen.',
+      category: ['energy'],
+      url: 'https://github.com/odh-labs/predictive-maint',
+      pricing: 'Open Source'
     }
   ];
 
@@ -258,24 +331,37 @@ export default function AIStack() {
         {/* Category Filter */}
         <div className="bg-purple-800/10">
           <div className="max-w-7xl mx-auto px-6 py-12">
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-wrap justify-center gap-2 md:gap-3">
               {categories.map((category) => (
                 <button
                   key={category.id}
                   onClick={() => setSelectedCategory(category.id)}
-                  className={`flex items-center gap-2 px-6 py-3 rounded-2xl font-medium transition-all duration-300 ${
+                  className={`px-4 py-2 md:px-5 md:py-3 rounded-xl font-medium transition-all duration-300 text-sm md:text-base ${
                     selectedCategory === category.id
                       ? 'bg-purple-600 text-purple-100 shadow-lg shadow-purple-500/20'
                       : 'bg-purple-800/30 text-purple-200 hover:bg-purple-700/40 border border-purple-700/50'
                   }`}
                 >
-                  <span className="text-lg">{category.icon}</span>
-                  {category.name}
+                  <span>{category.name}</span>
                 </button>
               ))}
             </div>
           </div>
         </div>
+
+        {/* AI Disclaimer for Energy Models */}
+        {selectedCategory === 'energy' && (
+          <div className="bg-purple-800/20">
+            <div className="max-w-7xl mx-auto px-6 py-8">
+              <div className="bg-purple-700/30 border border-purple-600/40 rounded-2xl p-6 text-center">
+                <p className="text-purple-200 text-sm md:text-base font-light leading-relaxed">
+                  <span className="font-medium text-purple-100">AI-Generated Content:</span> This section was built by AI and its data is a result of AI research. 
+                  We suggest teams validate the credibility and accuracy of these tools before using them in your projects.
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Tools Grid */}
         <div className="bg-purple-900/10">
