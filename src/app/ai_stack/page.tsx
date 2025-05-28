@@ -328,187 +328,206 @@ export default function AIStack() {
         </svg>
       </div>
 
-      <div className="relative z-10">
-        {/* Header */}
-        <div className="bg-purple-900/20">
-          <div className="max-w-7xl mx-auto px-6 py-12 text-center">
-            <div className="mb-6">
-              <span className="text-4xl mb-4 block">🤖</span>
-              <h1 className="text-4xl md:text-5xl font-semibold text-purple-100 tracking-tight leading-none mb-4">
-                There&apos;s an AI for that
-              </h1>
-              <p className="text-xl md:text-2xl text-purple-200 font-light tracking-tight mb-3">
-                AI stack library
-              </p>
-              <p className="text-lg text-purple-300 font-light max-w-2xl mx-auto leading-relaxed">
-                Discover the best AI tools for development, creativity, automation, and more.
-              </p>
+      {/* Mobile Not Supported Message */}
+      <div className="lg:hidden relative z-10 min-h-screen flex items-center justify-center px-6">
+        <div className="text-center max-w-md">
+          <span className="text-6xl mb-6 block">📱</span>
+          <h1 className="text-3xl font-semibold text-purple-100 tracking-tight leading-none mb-4">
+            Desktop Only
+          </h1>
+          <p className="text-lg text-purple-200 font-light mb-6 leading-relaxed">
+            This AI Stack Library is optimized for desktop viewing and isn&apos;t supported on mobile devices.
+          </p>
+          <p className="text-base text-purple-300 font-light leading-relaxed">
+            Please visit this page on a desktop or laptop computer for the best experience.
+          </p>
+        </div>
+      </div>
+
+      {/* Desktop Content */}
+      <div className="hidden lg:block relative z-10">
+        <div className="relative z-10">
+          {/* Header */}
+          <div className="bg-purple-900/20">
+            <div className="max-w-7xl mx-auto px-6 py-12 text-center">
+              <div className="mb-6">
+                <span className="text-4xl mb-4 block">🤖</span>
+                <h1 className="text-4xl md:text-5xl font-semibold text-purple-100 tracking-tight leading-none mb-4">
+                  There&apos;s an AI for that
+                </h1>
+                <p className="text-xl md:text-2xl text-purple-200 font-light tracking-tight mb-3">
+                  AI stack library
+                </p>
+                <p className="text-lg text-purple-300 font-light max-w-2xl mx-auto leading-relaxed">
+                  Discover the best AI tools for development, creativity, automation, and more.
+                </p>
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Main Content with Sidebar */}
-        <div className="bg-purple-900/10">
-          <div className="max-w-7xl mx-auto px-6 py-12">
-            <div className="flex gap-8">
-              {/* Left Sidebar - Filters */}
-              <div className="w-80 flex-shrink-0">
-                <div className="sticky top-8">
-                  {/* All Tools Button */}
-                  <div className="mb-6">
-                    <button
-                      onClick={() => setSelectedCategory('all')}
-                      className={`w-full px-4 py-3 rounded-xl font-medium transition-all duration-300 text-base ${
-                        selectedCategory === 'all'
-                          ? 'bg-purple-600 text-purple-100 shadow-lg shadow-purple-500/20'
-                          : 'bg-purple-800/30 text-purple-200 hover:bg-purple-700/40 border border-purple-700/50'
-                      }`}
-                    >
-                      All Tools
-                    </button>
-                  </div>
-
-                  {/* Filter Groups */}
-                  <div className="space-y-6">
-                    {/* IDEs Group */}
-                    <div>
-                      <h3 className="text-lg font-medium text-purple-200 mb-3">Build your app</h3>
-                      <div className="space-y-2">
-                        <button
-                          onClick={() => setSelectedCategory('ides')}
-                          className={`w-full px-4 py-2 rounded-xl font-medium transition-all duration-300 text-sm text-left ${
-                            selectedCategory === 'ides'
-                              ? 'bg-purple-600 text-purple-100 shadow-lg shadow-purple-500/20'
-                              : 'bg-purple-800/30 text-purple-200 hover:bg-purple-700/40 border border-purple-700/50'
-                          }`}
-                        >
-                          AI-driven IDEs
-                        </button>
-                        <button
-                          onClick={() => setSelectedCategory('code')}
-                          className={`w-full px-4 py-2 rounded-xl font-medium transition-all duration-300 text-sm text-left ${
-                            selectedCategory === 'code'
-                              ? 'bg-purple-600 text-purple-100 shadow-lg shadow-purple-500/20'
-                              : 'bg-purple-800/30 text-purple-200 hover:bg-purple-700/40 border border-purple-700/50'
-                          }`}
-                        >
-                          Code & Dev
-                        </button>
-                      </div>
+          {/* Main Content with Sidebar */}
+          <div className="bg-purple-900/10">
+            <div className="max-w-7xl mx-auto px-6 py-12">
+              <div className="flex gap-8">
+                {/* Left Sidebar - Filters */}
+                <div className="w-80 flex-shrink-0">
+                  <div className="sticky top-8">
+                    {/* All Tools Button */}
+                    <div className="mb-6">
+                      <button
+                        onClick={() => setSelectedCategory('all')}
+                        className={`w-full px-4 py-3 rounded-xl font-medium transition-all duration-300 text-base ${
+                          selectedCategory === 'all'
+                            ? 'bg-purple-600 text-purple-100 shadow-lg shadow-purple-500/20'
+                            : 'bg-purple-800/30 text-purple-200 hover:bg-purple-700/40 border border-purple-700/50'
+                        }`}
+                      >
+                        All Tools
+                      </button>
                     </div>
 
-                    {/* Build Your App Group */}
-                    <div>
-                      <h3 className="text-lg font-medium text-purple-200 mb-3">AI Models & Tools</h3>
-                      <div className="space-y-2">
-                        <button
-                          onClick={() => setSelectedCategory('general')}
-                          className={`w-full px-4 py-2 rounded-xl font-medium transition-all duration-300 text-sm text-left ${
-                            selectedCategory === 'general'
-                              ? 'bg-purple-600 text-purple-100 shadow-lg shadow-purple-500/20'
-                              : 'bg-purple-800/30 text-purple-200 hover:bg-purple-700/40 border border-purple-700/50'
-                          }`}
-                        >
-                          General Purpose
-                        </button>
-                        <button
-                          onClick={() => setSelectedCategory('data')}
-                          className={`w-full px-4 py-2 rounded-xl font-medium transition-all duration-300 text-sm text-left ${
-                            selectedCategory === 'data'
-                              ? 'bg-purple-600 text-purple-100 shadow-lg shadow-purple-500/20'
-                              : 'bg-purple-800/30 text-purple-200 hover:bg-purple-700/40 border border-purple-700/50'
-                          }`}
-                        >
-                          Data Processing & Analytics
-                        </button>
-                        <button
-                          onClick={() => setSelectedCategory('automation')}
-                          className={`w-full px-4 py-2 rounded-xl font-medium transition-all duration-300 text-sm text-left ${
-                            selectedCategory === 'automation'
-                              ? 'bg-purple-600 text-purple-100 shadow-lg shadow-purple-500/20'
-                              : 'bg-purple-800/30 text-purple-200 hover:bg-purple-700/40 border border-purple-700/50'
-                          }`}
-                        >
-                          Automation
-                        </button>
-                        <button
-                          onClick={() => setSelectedCategory('energy')}
-                          className={`w-full px-4 py-2 rounded-xl font-medium transition-all duration-300 text-sm text-left ${
-                            selectedCategory === 'energy'
-                              ? 'bg-purple-600 text-purple-100 shadow-lg shadow-purple-500/20'
-                              : 'bg-purple-800/30 text-purple-200 hover:bg-purple-700/40 border border-purple-700/50'
-                          }`}
-                        >
-                          Open Source Energy Models
-                        </button>
+                    {/* Filter Groups */}
+                    <div className="space-y-6">
+                      {/* IDEs Group */}
+                      <div>
+                        <h3 className="text-lg font-medium text-purple-200 mb-3">Build your app</h3>
+                        <div className="space-y-2">
+                          <button
+                            onClick={() => setSelectedCategory('ides')}
+                            className={`w-full px-4 py-2 rounded-xl font-medium transition-all duration-300 text-sm text-left ${
+                              selectedCategory === 'ides'
+                                ? 'bg-purple-600 text-purple-100 shadow-lg shadow-purple-500/20'
+                                : 'bg-purple-800/30 text-purple-200 hover:bg-purple-700/40 border border-purple-700/50'
+                            }`}
+                          >
+                            AI-driven IDEs
+                          </button>
+                          <button
+                            onClick={() => setSelectedCategory('code')}
+                            className={`w-full px-4 py-2 rounded-xl font-medium transition-all duration-300 text-sm text-left ${
+                              selectedCategory === 'code'
+                                ? 'bg-purple-600 text-purple-100 shadow-lg shadow-purple-500/20'
+                                : 'bg-purple-800/30 text-purple-200 hover:bg-purple-700/40 border border-purple-700/50'
+                            }`}
+                          >
+                            Code & Dev
+                          </button>
+                        </div>
                       </div>
-                    </div>
 
-                    {/* Deploy Your App Group */}
-                    <div>
-                      <h3 className="text-lg font-medium text-purple-200 mb-3">Deploy your app</h3>
-                      <div className="space-y-2">
-                        <button
-                          onClick={() => setSelectedCategory('deployment')}
-                          className={`w-full px-4 py-2 rounded-xl font-medium transition-all duration-300 text-sm text-left ${
-                            selectedCategory === 'deployment'
-                              ? 'bg-purple-600 text-purple-100 shadow-lg shadow-purple-500/20'
-                              : 'bg-purple-800/30 text-purple-200 hover:bg-purple-700/40 border border-purple-700/50'
-                          }`}
-                        >
-                          Deployment & Hosting
-                        </button>
+                      {/* Build Your App Group */}
+                      <div>
+                        <h3 className="text-lg font-medium text-purple-200 mb-3">AI Models & Tools</h3>
+                        <div className="space-y-2">
+                          <button
+                            onClick={() => setSelectedCategory('general')}
+                            className={`w-full px-4 py-2 rounded-xl font-medium transition-all duration-300 text-sm text-left ${
+                              selectedCategory === 'general'
+                                ? 'bg-purple-600 text-purple-100 shadow-lg shadow-purple-500/20'
+                                : 'bg-purple-800/30 text-purple-200 hover:bg-purple-700/40 border border-purple-700/50'
+                            }`}
+                          >
+                            General Purpose
+                          </button>
+                          <button
+                            onClick={() => setSelectedCategory('data')}
+                            className={`w-full px-4 py-2 rounded-xl font-medium transition-all duration-300 text-sm text-left ${
+                              selectedCategory === 'data'
+                                ? 'bg-purple-600 text-purple-100 shadow-lg shadow-purple-500/20'
+                                : 'bg-purple-800/30 text-purple-200 hover:bg-purple-700/40 border border-purple-700/50'
+                            }`}
+                          >
+                            Data Processing & Analytics
+                          </button>
+                          <button
+                            onClick={() => setSelectedCategory('automation')}
+                            className={`w-full px-4 py-2 rounded-xl font-medium transition-all duration-300 text-sm text-left ${
+                              selectedCategory === 'automation'
+                                ? 'bg-purple-600 text-purple-100 shadow-lg shadow-purple-500/20'
+                                : 'bg-purple-800/30 text-purple-200 hover:bg-purple-700/40 border border-purple-700/50'
+                            }`}
+                          >
+                            Automation
+                          </button>
+                          <button
+                            onClick={() => setSelectedCategory('energy')}
+                            className={`w-full px-4 py-2 rounded-xl font-medium transition-all duration-300 text-sm text-left ${
+                              selectedCategory === 'energy'
+                                ? 'bg-purple-600 text-purple-100 shadow-lg shadow-purple-500/20'
+                                : 'bg-purple-800/30 text-purple-200 hover:bg-purple-700/40 border border-purple-700/50'
+                            }`}
+                          >
+                            Open Source Energy Models
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* Deploy Your App Group */}
+                      <div>
+                        <h3 className="text-lg font-medium text-purple-200 mb-3">Deploy your app</h3>
+                        <div className="space-y-2">
+                          <button
+                            onClick={() => setSelectedCategory('deployment')}
+                            className={`w-full px-4 py-2 rounded-xl font-medium transition-all duration-300 text-sm text-left ${
+                              selectedCategory === 'deployment'
+                                ? 'bg-purple-600 text-purple-100 shadow-lg shadow-purple-500/20'
+                                : 'bg-purple-800/30 text-purple-200 hover:bg-purple-700/40 border border-purple-700/50'
+                            }`}
+                          >
+                            Deployment & Hosting
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Right Content - AI Disclaimer and Tools */}
-              <div className="flex-1">
-                {/* AI Disclaimer for Energy Models */}
-                {selectedCategory === 'energy' && (
-                  <div className="mb-8">
-                    <div className="bg-purple-700/30 border border-purple-600/40 rounded-2xl p-6 text-center">
-                      <p className="text-purple-200 text-sm md:text-base font-light leading-relaxed">
-                        <span className="font-medium text-purple-100">AI-Generated Content:</span> This section was built by AI and its data is a result of AI research. 
-                        We suggest teams validate the credibility and accuracy of these tools before using them in your projects.
-                      </p>
-                    </div>
-                  </div>
-                )}
-
-                {/* Tools Grid */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {filteredTools.map((tool, index) => (
-                    <div
-                      key={index}
-                      className="bg-gradient-to-br from-purple-800/40 via-purple-700/30 to-purple-600/20 rounded-3xl p-6 border border-purple-600/30 hover:border-purple-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/10 group"
-                    >
-                      <div className="mb-4">
-                        <h3 className="text-xl font-semibold text-purple-100 mb-3 tracking-tight group-hover:text-white transition-colors">
-                          {tool.name}
-                        </h3>
-                        <p className="text-purple-200 font-light leading-relaxed mb-4 text-sm">
-                          {tool.description}
+                {/* Right Content - AI Disclaimer and Tools */}
+                <div className="flex-1">
+                  {/* AI Disclaimer for Energy Models */}
+                  {selectedCategory === 'energy' && (
+                    <div className="mb-8">
+                      <div className="bg-purple-700/30 border border-purple-600/40 rounded-2xl p-6 text-center">
+                        <p className="text-purple-200 text-sm md:text-base font-light leading-relaxed">
+                          <span className="font-medium text-purple-100">AI-Generated Content:</span> This section was built by AI and its data is a result of AI research. 
+                          We suggest teams validate the credibility and accuracy of these tools before using them in your projects.
                         </p>
-                        
-                        <div className="flex items-center justify-between">
-                          <span className="bg-purple-600/50 text-purple-100 text-xs font-medium px-3 py-1 rounded-full">
-                            {tool.pricing}
-                          </span>
-                          <a
-                            href={tool.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-purple-300 hover:text-purple-100 transition-colors text-sm font-medium"
-                          >
-                            Visit →
-                          </a>
-                        </div>
                       </div>
                     </div>
-                  ))}
+                  )}
+
+                  {/* Tools Grid */}
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {filteredTools.map((tool, index) => (
+                      <div
+                        key={index}
+                        className="bg-gradient-to-br from-purple-800/40 via-purple-700/30 to-purple-600/20 rounded-3xl p-6 border border-purple-600/30 hover:border-purple-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/10 group"
+                      >
+                        <div className="mb-4">
+                          <h3 className="text-xl font-semibold text-purple-100 mb-3 tracking-tight group-hover:text-white transition-colors">
+                            {tool.name}
+                          </h3>
+                          <p className="text-purple-200 font-light leading-relaxed mb-4 text-sm">
+                            {tool.description}
+                          </p>
+                          
+                          <div className="flex items-center justify-between">
+                            <span className="bg-purple-600/50 text-purple-100 text-xs font-medium px-3 py-1 rounded-full">
+                              {tool.pricing}
+                            </span>
+                            <a
+                              href={tool.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-purple-300 hover:text-purple-100 transition-colors text-sm font-medium"
+                            >
+                              Visit →
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
