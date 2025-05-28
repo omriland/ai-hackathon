@@ -6,20 +6,6 @@ import { useState } from 'react';
 export default function AIStack() {
   const [selectedCategory, setSelectedCategory] = useState('all');
 
-  const categories = [
-    { id: 'all', name: 'All Tools' },
-    // IDEs
-    { id: 'ides', name: 'AI-driven IDEs' },
-    { id: 'code', name: 'Code & Dev' },
-    // Build your app
-    { id: 'general', name: 'General Purpose' },
-    { id: 'data', name: 'Data Processing & Analytics' },
-    { id: 'automation', name: 'Automation' },
-    { id: 'energy', name: 'Open Source Energy Models' },
-    // Deploy your app
-    { id: 'deployment', name: 'Deployment & Hosting' }
-  ];
-
   const aiTools = [
     // AI-driven IDEs
     {
@@ -349,7 +335,7 @@ export default function AIStack() {
             <div className="mb-6">
               <span className="text-4xl mb-4 block">🤖</span>
               <h1 className="text-4xl md:text-5xl font-semibold text-purple-100 tracking-tight leading-none mb-4">
-                There's an AI for that
+                There&apos;s an AI for that
               </h1>
               <p className="text-xl md:text-2xl text-purple-200 font-light tracking-tight mb-3">
                 AI stack library
