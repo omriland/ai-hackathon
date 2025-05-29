@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { useState } from 'react';
+import Link from 'next/link';
 
 export default function AIStack() {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -349,13 +350,13 @@ export default function AIStack() {
         {/* Breadcrumb */}
         <div className="bg-purple-900/10">
           <div className="max-w-7xl mx-auto px-6 py-4">
-            <a
+            <Link
               href="/"
               className="inline-flex items-center gap-2 text-purple-300 hover:text-purple-100 transition-colors text-sm font-medium"
             >
               <span>←</span>
               Back to Home
-            </a>
+            </Link>
           </div>
         </div>
 

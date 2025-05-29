@@ -601,14 +601,22 @@ export default function Home() {
         @keyframes shine {
           0% {
             transform: translateX(-100%);
+            opacity: 0;
+          }
+          10% {
+            opacity: 1;
+          }
+          90% {
+            opacity: 1;
           }
           100% {
             transform: translateX(100%);
+            opacity: 0;
           }
         }
         .animate-shine {
-          animation: shine 2s ease-in-out infinite;
-          animation-delay: 1s;
+          animation: shine 3s ease-in-out infinite;
+          animation-delay: 2s;
         }
         
         @keyframes earthquake {
