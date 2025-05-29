@@ -125,6 +125,23 @@ export default function Home() {
   return (
     <div className={`min-h-screen transition-all duration-1000 ${matrixMode ? 'bg-black' : 'bg-purple-950'} ${screenShake ? 'animate-pulse' : ''} relative`}>
       
+      {/* AI Stack Promotional Sticky Element */}
+      <div className="hidden lg:block fixed left-0 top-1/2 transform -translate-y-1/2 z-50 group">
+        <div className="bg-gradient-to-r from-purple-600 to-purple-700 text-white px-4 py-3 rounded-r-2xl shadow-2xl transition-all duration-300 ease-out transform -translate-x-2 group-hover:translate-x-0 border-r-4 border-purple-400 relative overflow-hidden">
+          {/* Glow Animation */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out animate-shine"></div>
+          
+          <a href="/ai_stack" className="flex items-center gap-3 no-underline relative z-10">
+            <div className="text-2xl">🤖</div>
+            <div className="hidden group-hover:block transition-all duration-300">
+              <div className="text-sm font-semibold">AI Stack Library</div>
+              <div className="text-xs text-purple-200">Discover AI tools →</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      {/* Shine Animation Styles */}
       {/* Cool Asymmetric Background Pattern */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         {/* Geometric shapes - slightly more visible */}
@@ -194,23 +211,9 @@ export default function Home() {
       </div>
 
       {screenShake && (
-        <style jsx>{`
-          @keyframes earthquake {
-            0%, 100% { transform: translate(0px, 0px) rotate(0deg); }
-            10% { transform: translate(-2px, -1px) rotate(-0.5deg); }
-            20% { transform: translate(-1px, 0px) rotate(0.5deg); }
-            30% { transform: translate(1px, 2px) rotate(0deg); }
-            40% { transform: translate(1px, -1px) rotate(0.5deg); }
-            50% { transform: translate(-1px, 2px) rotate(-0.5deg); }
-            60% { transform: translate(-1px, 1px) rotate(0deg); }
-            70% { transform: translate(2px, 1px) rotate(-0.5deg); }
-            80% { transform: translate(-2px, -1px) rotate(0.5deg); }
-            90% { transform: translate(1px, 2px) rotate(0deg); }
-          }
-          .earthquake {
-            animation: earthquake 0.1s infinite;
-          }
-        `}</style>
+        <div className="fixed inset-0 pointer-events-none">
+          {/* Screen shake effect will be handled by CSS class */}
+        </div>
       )}
       {/* Drag Error Effect */}
       {dragError && (
@@ -254,24 +257,6 @@ export default function Home() {
               </p>
             </div>
           </div>
-          
-          <style jsx>{`
-            @keyframes matrix-fall {
-              0% {
-                transform: translateY(-100vh);
-                opacity: 1;
-              }
-              100% {
-                transform: translateY(100vh);
-                opacity: 0;
-              }
-            }
-            .matrix-code {
-              animation: matrix-fall linear infinite;
-              writing-mode: vertical-rl;
-              text-orientation: upright;
-            }
-          `}</style>
         </div>
       )}
 
@@ -292,21 +277,6 @@ export default function Home() {
               ❄️
             </div>
           ))}
-          <style jsx>{`
-            @keyframes snowfall {
-              0% {
-                transform: translateY(-100px) translateX(0px) rotate(0deg);
-                opacity: 1;
-              }
-              100% {
-                transform: translateY(calc(100vh + 100px)) translateX(50px) rotate(360deg);
-                opacity: 0.3;
-              }
-            }
-            .snow-flake {
-              animation: snowfall linear infinite;
-            }
-          `}</style>
         </div>
       )}
 
@@ -386,8 +356,8 @@ export default function Home() {
               </p>
               <button 
                 onClick={() => {
-                  const startDate = new Date('2024-06-15T09:00:00');
-                  const endDate = new Date('2024-06-16T21:00:00');
+                  const startDate = new Date('2025-06-15T09:00:00');
+                  const endDate = new Date('2025-06-16T21:00:00');
                   
                   const formatDate = (date: Date) => {
                     return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
@@ -625,6 +595,68 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {/* Consolidated Styles */}
+      <style jsx>{`
+        @keyframes shine {
+          0% {
+            transform: translateX(-100%);
+          }
+          100% {
+            transform: translateX(100%);
+          }
+        }
+        .animate-shine {
+          animation: shine 2s ease-in-out infinite;
+          animation-delay: 1s;
+        }
+        
+        @keyframes earthquake {
+          0%, 100% { transform: translate(0px, 0px) rotate(0deg); }
+          10% { transform: translate(-2px, -1px) rotate(-0.5deg); }
+          20% { transform: translate(-1px, 0px) rotate(0.5deg); }
+          30% { transform: translate(1px, 2px) rotate(0deg); }
+          40% { transform: translate(1px, -1px) rotate(0.5deg); }
+          50% { transform: translate(-1px, 2px) rotate(-0.5deg); }
+          60% { transform: translate(-1px, 1px) rotate(0deg); }
+          70% { transform: translate(2px, 1px) rotate(-0.5deg); }
+          80% { transform: translate(-2px, -1px) rotate(0.5deg); }
+          90% { transform: translate(1px, 2px) rotate(0deg); }
+        }
+        .earthquake {
+          animation: earthquake 0.1s infinite;
+        }
+        
+        @keyframes matrix-fall {
+          0% {
+            transform: translateY(-100vh);
+            opacity: 1;
+          }
+          100% {
+            transform: translateY(100vh);
+            opacity: 0;
+          }
+        }
+        .matrix-code {
+          animation: matrix-fall linear infinite;
+          writing-mode: vertical-rl;
+          text-orientation: upright;
+        }
+        
+        @keyframes snowfall {
+          0% {
+            transform: translateY(-100px) translateX(0px) rotate(0deg);
+            opacity: 1;
+          }
+          100% {
+            transform: translateY(calc(100vh + 100px)) translateX(50px) rotate(360deg);
+            opacity: 0.3;
+          }
+        }
+        .snow-flake {
+          animation: snowfall linear infinite;
+        }
+      `}</style>
     </div>
   );
 }

@@ -346,6 +346,19 @@ export default function AIStack() {
 
       {/* Desktop Content */}
       <div className="hidden lg:block relative z-10">
+        {/* Breadcrumb */}
+        <div className="bg-purple-900/10">
+          <div className="max-w-7xl mx-auto px-6 py-4">
+            <a
+              href="/"
+              className="inline-flex items-center gap-2 text-purple-300 hover:text-purple-100 transition-colors text-sm font-medium"
+            >
+              <span>←</span>
+              Back to Home
+            </a>
+          </div>
+        </div>
+
         <div className="relative z-10">
           {/* Header */}
           <div className="bg-purple-900/20">
