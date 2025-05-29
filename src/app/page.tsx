@@ -486,18 +486,6 @@ export default function Home() {
                   </div>
                 </li>
                 
-                <li className="flex items-start gap-4">
-                  <div className="w-2 h-2 bg-purple-300 rounded-full mt-3 flex-shrink-0"></div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
-                      <h3 className="text-2xl font-semibold text-purple-100 tracking-tight">HW Edge Device to transmit analog inputs over RF</h3>
-                      <span className="bg-gradient-to-r from-purple-600 via-purple-500 to-indigo-600 text-purple-100 text-sm font-medium px-3 py-1 rounded-full border border-purple-500 shadow-lg">
-                        HW/FW Only
-                      </span>
-                    </div>
-                    <p className="text-purple-200 font-light text-lg leading-relaxed">Create a hardware solution that can capture analog signals and transmit them wirelessly using RF technology to the bridge.</p>
-                  </div>
-                </li>
                 
                 
                 <li className="flex items-start gap-4">
